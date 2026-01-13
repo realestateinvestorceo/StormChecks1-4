@@ -1,0 +1,104 @@
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { CloudLightning, Menu, X } from 'lucide-react';
+
+const Navbar: React.FC = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const navLinks = [
+    { name: 'How It Works', path: '/#how-it-works', isAnchor: true },
+    { name: 'Expert File', path: '/expert-file', isAnchor: false },
+    { name: 'Case Work', path: '/case-work', isAnchor: false },
+    { name: 'Leadership', path: '/leadership', isAnchor: false },
+  ];
+
+  return (
+    <nav className="sticky top-0 z-50 bg-primary text-white shadow-lg border-b border-white/10">
+      <div className="container mx-auto px-4 h-20 flex items-center justify-between">
+        {/* Logo Section */}
+        <Link to="/" className="flex items-center space-x-3 group" onClick={() => setIsMobileMenuOpen(false)}>
+          <div className="p-2 bg-accent rounded-lg group-hover:bg-[#E6AC00] transition-colors">
+            <CloudLightning className="w-6 h-6 text-primary" />
+          </div>
+          <span className="text-xl md:text-2xl font-bold tracking-tight text-white">StormChecks</span>
+        </Link>
+
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center space-x-8">
+          {navLinks.map((link) => (
+             link.isAnchor ? (
+                <a
+                  key={link.name}
+                  href={link.path}
+                  className="text-gray-300 hover:text-accent font-medium transition-colors text-sm uppercase tracking-wide"
+                >
+                  {link.name}
+                </a>
+             ) : (
+                <Link
+                  key={link.name}
+                  to={link.path}
+                  className="text-gray-300 hover:text-accent font-medium transition-colors text-sm uppercase tracking-wide"
+                >
+                  {link.name}
+                </Link>
+             )
+          ))}
+        </div>
+
+        {/* CTA Button */}
+        <div className="hidden md:block">
+          <Link to="/contact" className="bg-accent text-primary px-6 py-3 rounded-lg font-bold hover:bg-[#E6AC00] transition-all shadow-lg hover:shadow-accent/20 hover:-translate-y-0.5 text-sm uppercase tracking-wide">
+            Free Monitoring
+          </Link>
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden text-gray-300 hover:text-white p-2"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden bg-primary border-t border-gray-800 absolute w-full left-0 shadow-2xl">
+          <div className="flex flex-col p-4 space-y-4">
+            {navLinks.map((link) => (
+              link.isAnchor ? (
+                  <a
+                    key={link.name}
+                    href={link.path}
+                    className="text-gray-300 hover:text-accent font-medium transition-colors py-2 block"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {link.name}
+                  </a>
+              ) : (
+                  <Link
+                    key={link.name}
+                    to={link.path}
+                    className="text-gray-300 hover:text-accent font-medium transition-colors py-2 block"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {link.name}
+                  </Link>
+              )
+            ))}
+            <Link
+              to="/contact"
+              className="bg-accent text-primary px-5 py-3 rounded-md font-bold hover:bg-[#E6AC00] transition-colors text-center block mt-4"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Free Monitoring
+            </Link>
+          </div>
+        </div>
+      )}
+    </nav>
+  );
+};
+
+export default Navbar;
