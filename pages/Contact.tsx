@@ -26,8 +26,18 @@ const Contact: React.FC = () => {
     <div className="bg-white min-h-screen">
       {/* Hero Section */}
       <section className="bg-primary py-24 md:py-32 relative overflow-hidden">
+        
+        {/* Background Image & Overlay */}
+        <div className="absolute inset-0 z-0">
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: "url('https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/69661ec30475d45fdc3d170f.png')" }}
+          ></div>
+          <div className="absolute inset-0 bg-[#0B1F33]/85"></div>
+        </div>
+
         {/* Decorative background elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
           <div className="absolute -right-[10%] -top-[10%] w-[800px] h-[800px] bg-white opacity-[0.03] rounded-full blur-3xl"></div>
           <div className="absolute right-[5%] top-[25%] w-[600px] h-[600px] bg-accent opacity-[0.04] rounded-full blur-3xl"></div>
         </div>

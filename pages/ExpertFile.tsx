@@ -7,8 +7,18 @@ const ExpertFile: React.FC = () => {
     <div className="bg-white min-h-screen">
       {/* Hero Section */}
       <section className="bg-primary py-24 md:py-32 relative overflow-hidden">
+        
+        {/* Background Image & Overlay */}
+        <div className="absolute inset-0 z-0">
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: "url('https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/6965f00098efbd0763445bd5.png')" }}
+          ></div>
+          <div className="absolute inset-0 bg-[#0B1F33]/85"></div>
+        </div>
+
         {/* Decorative background elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
           <div className="absolute -right-[10%] -top-[10%] w-[800px] h-[800px] bg-white opacity-[0.03] rounded-full blur-3xl"></div>
           <div className="absolute right-[5%] top-[25%] w-[600px] h-[600px] bg-accent opacity-[0.04] rounded-full blur-3xl"></div>
         </div>
@@ -61,69 +71,123 @@ const ExpertFile: React.FC = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Card 1 */}
-            <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-all duration-300">
-              <div className="w-14 h-14 bg-primary/5 rounded-lg flex items-center justify-center mb-6">
-                <Cloud className="w-7 h-7 text-primary" />
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-all duration-300 overflow-hidden flex flex-col h-full group">
+              <div className="h-48 w-full relative overflow-hidden">
+                <img 
+                  src="https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/6965f16a02f1be8a470629d9.png" 
+                  alt="Meteorological Verification" 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
               </div>
-              <h3 className="text-xl font-bold text-primary mb-4">Meteorological Verification</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Date-specific storm data from NOAA and private weather services — hail size, wind speed, duration, and direction — confirmed to your property's exact coordinates. This is the storm-to-location linkage carriers require.
-              </p>
+              <div className="p-8 flex flex-col flex-grow">
+                <div className="w-14 h-14 bg-primary/5 rounded-lg flex items-center justify-center mb-6">
+                  <Cloud className="w-7 h-7 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold text-primary mb-4">Meteorological Verification</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Date-specific storm data from NOAA and private weather services — hail size, wind speed, duration, and direction — confirmed to your property's exact coordinates. This is the storm-to-location linkage carriers require.
+                </p>
+              </div>
             </div>
 
             {/* Card 2 */}
-            <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-all duration-300">
-              <div className="w-14 h-14 bg-primary/5 rounded-lg flex items-center justify-center mb-6">
-                <Search className="w-7 h-7 text-primary" />
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-all duration-300 overflow-hidden flex flex-col h-full group">
+              <div className="h-48 w-full relative overflow-hidden">
+                <img 
+                  src="https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/6965f1daf8a93bbc612078b4.png" 
+                  alt="Forensic Inspection Findings" 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
               </div>
-              <h3 className="text-xl font-bold text-primary mb-4">Forensic Inspection Findings</h3>
-              <p className="text-gray-600 leading-relaxed">
-                System-by-system damage analysis: roof, façade, HVAC, gutters, flashing, membrane. Each finding is tied to a specific storm event with photographic evidence and technical narrative.
-              </p>
+              <div className="p-8 flex flex-col flex-grow">
+                <div className="w-14 h-14 bg-primary/5 rounded-lg flex items-center justify-center mb-6">
+                  <Search className="w-7 h-7 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold text-primary mb-4">Forensic Inspection Findings</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  System-by-system damage analysis: roof, façade, HVAC, gutters, flashing, membrane. Each finding is tied to a specific storm event with photographic evidence and technical narrative.
+                </p>
+              </div>
             </div>
 
             {/* Card 3 */}
-            <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-all duration-300">
-              <div className="w-14 h-14 bg-primary/5 rounded-lg flex items-center justify-center mb-6">
-                <Camera className="w-7 h-7 text-primary" />
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-all duration-300 overflow-hidden flex flex-col h-full group">
+              <div className="h-48 w-full relative overflow-hidden">
+                <img 
+                  src="https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/6965f23ec7683b7cd9fec24b.png" 
+                  alt="Evidence Library" 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
               </div>
-              <h3 className="text-xl font-bold text-primary mb-4">Evidence Library</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Labeled, grid-based photo documentation with measurement references, microscopic impact analysis, and comparison shots. Every image is timestamped and indexed for adjuster review.
-              </p>
+              <div className="p-8 flex flex-col flex-grow">
+                <div className="w-14 h-14 bg-primary/5 rounded-lg flex items-center justify-center mb-6">
+                  <Camera className="w-7 h-7 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold text-primary mb-4">Evidence Library</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Labeled, grid-based photo documentation with measurement references, microscopic impact analysis, and comparison shots. Every image is timestamped and indexed for adjuster review.
+                </p>
+              </div>
             </div>
 
             {/* Card 4 */}
-            <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-all duration-300">
-              <div className="w-14 h-14 bg-primary/5 rounded-lg flex items-center justify-center mb-6">
-                <FileText className="w-7 h-7 text-primary" />
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-all duration-300 overflow-hidden flex flex-col h-full group">
+              <div className="h-48 w-full relative overflow-hidden">
+                <img 
+                  src="https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/6965f2a5c7683b50adfecc96.png" 
+                  alt="Causation Narrative" 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
               </div>
-              <h3 className="text-xl font-bold text-primary mb-4">Causation Narrative</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Carrier-recognized language establishing event specificity and eliminating alternative causes like wear-and-tear or deferred maintenance. This is the section most contractor bids are missing — and why they get denied.
-              </p>
+              <div className="p-8 flex flex-col flex-grow">
+                <div className="w-14 h-14 bg-primary/5 rounded-lg flex items-center justify-center mb-6">
+                  <FileText className="w-7 h-7 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold text-primary mb-4">Causation Narrative</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Carrier-recognized language establishing event specificity and eliminating alternative causes like wear-and-tear or deferred maintenance. This is the section most contractor bids are missing — and why they get denied.
+                </p>
+              </div>
             </div>
 
             {/* Card 5 */}
-            <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-all duration-300">
-              <div className="w-14 h-14 bg-primary/5 rounded-lg flex items-center justify-center mb-6">
-                <Calculator className="w-7 h-7 text-primary" />
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-all duration-300 overflow-hidden flex flex-col h-full group">
+              <div className="h-48 w-full relative overflow-hidden">
+                <img 
+                  src="https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/6965f37695f9f92554ff2e09.png" 
+                  alt="Scope & Cost Support" 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
               </div>
-              <h3 className="text-xl font-bold text-primary mb-4">Scope & Cost Support</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Replacement and repair estimates built in Xactimate — the same software carriers use internally. Scope is aligned to carrier review standards, not contractor markup.
-              </p>
+              <div className="p-8 flex flex-col flex-grow">
+                <div className="w-14 h-14 bg-primary/5 rounded-lg flex items-center justify-center mb-6">
+                  <Calculator className="w-7 h-7 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold text-primary mb-4">Scope & Cost Support</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Replacement and repair estimates built in Xactimate — the same software carriers use internally. Scope is aligned to carrier review standards, not contractor markup.
+                </p>
+              </div>
             </div>
 
             {/* Card 6 */}
-            <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-all duration-300">
-              <div className="w-14 h-14 bg-primary/5 rounded-lg flex items-center justify-center mb-6">
-                <ClipboardCheck className="w-7 h-7 text-primary" />
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-all duration-300 overflow-hidden flex flex-col h-full group">
+              <div className="h-48 w-full relative overflow-hidden">
+                <img 
+                  src="https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/6965f40595f9f935e0ff3c14.png" 
+                  alt="Executive Summary" 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
               </div>
-              <h3 className="text-xl font-bold text-primary mb-4">Executive Summary</h3>
-              <p className="text-gray-600 leading-relaxed">
-                A technical brief formatted for carrier internal decision-making. Clear, concise, and designed to move through the approval process without triggering review flags.
-              </p>
+              <div className="p-8 flex flex-col flex-grow">
+                <div className="w-14 h-14 bg-primary/5 rounded-lg flex items-center justify-center mb-6">
+                  <ClipboardCheck className="w-7 h-7 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold text-primary mb-4">Executive Summary</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  A technical brief formatted for carrier internal decision-making. Clear, concise, and designed to move through the approval process without triggering review flags.
+                </p>
+              </div>
             </div>
           </div>
         </div>

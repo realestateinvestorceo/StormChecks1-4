@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { CloudLightning, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -16,15 +16,16 @@ const Navbar: React.FC = () => {
     <nav className="sticky top-0 z-50 bg-primary text-white shadow-lg border-b border-white/10">
       <div className="container mx-auto px-4 h-20 flex items-center justify-between">
         {/* Logo Section */}
-        <Link to="/" className="flex items-center space-x-3 group" onClick={() => setIsMobileMenuOpen(false)}>
-          <div className="p-2 bg-accent rounded-lg group-hover:bg-[#E6AC00] transition-colors">
-            <CloudLightning className="w-6 h-6 text-primary" />
-          </div>
-          <span className="text-xl md:text-2xl font-bold tracking-tight text-white">StormChecks</span>
+        <Link to="/" className="flex items-center" onClick={() => setIsMobileMenuOpen(false)}>
+          <img 
+            src="https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/6965eb1102f1be5aff055077.png" 
+            alt="StormChecks" 
+            className="w-36 md:w-40 h-auto"
+          />
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden lg:flex items-center space-x-8">
           {navLinks.map((link) => (
              link.isAnchor ? (
                 <a
@@ -47,7 +48,7 @@ const Navbar: React.FC = () => {
         </div>
 
         {/* CTA Button */}
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <Link to="/contact" className="bg-accent text-primary px-6 py-3 rounded-lg font-bold hover:bg-[#E6AC00] transition-all shadow-lg hover:shadow-accent/20 hover:-translate-y-0.5 text-sm uppercase tracking-wide">
             Free Monitoring
           </Link>
@@ -55,7 +56,7 @@ const Navbar: React.FC = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-gray-300 hover:text-white p-2"
+          className="lg:hidden text-gray-300 hover:text-white p-2"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -64,7 +65,7 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-primary border-t border-gray-800 absolute w-full left-0 shadow-2xl">
+        <div className="lg:hidden bg-primary border-t border-gray-800 absolute w-full left-0 shadow-2xl">
           <div className="flex flex-col p-4 space-y-4">
             {navLinks.map((link) => (
               link.isAnchor ? (
