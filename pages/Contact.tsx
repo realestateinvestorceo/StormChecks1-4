@@ -1,9 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Mail, Phone, Send, Check, CheckCircle } from 'lucide-react';
+import { Mail, Phone, Send, Check, CheckCircle, Loader2 } from 'lucide-react';
 import { Link, useSearchParams } from 'react-router-dom';
 
 const Contact: React.FC = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [searchParams] = useSearchParams();
   const formRef = useRef<HTMLElement>(null);
   const nameInputRef = useRef<HTMLInputElement>(null);
@@ -27,11 +28,44 @@ const Contact: React.FC = () => {
     }
   }, [searchParams]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitted(true);
-    // Scroll to top of form section to show success message clearly
-    formRef.current?.scrollIntoView({ behavior: 'smooth' });
+    setIsSubmitting(true);
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      fullName: formData.get('fullName'),
+      companyName: formData.get('companyName'),
+      email: formData.get('email'),
+      phone: formData.get('phone'),
+      address: formData.get('address'),
+      propertyType: formData.get('propertyType'),
+      sqFootage: formData.get('sqFootage'),
+      notes: formData.get('notes'),
+    };
+
+    try {
+      const response = await fetch('https://hook.us2.make.com/3557od1wk5xx98h9r7tq6wnliojtvnri', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        // Scroll to top of form section to show success message clearly
+        formRef.current?.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        alert('Something went wrong. Please try again later.');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Something went wrong. Please check your internet connection and try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -96,6 +130,7 @@ const Contact: React.FC = () => {
                       <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Your Name <span className="text-red-500">*</span></label>
                       <input 
                         ref={nameInputRef}
+                        name="fullName"
                         type="text" 
                         className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors" 
                         placeholder="John Smith" 
@@ -105,22 +140,45 @@ const Contact: React.FC = () => {
 
                     <div className="space-y-2">
                       <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Company / Entity Name <span className="text-red-500">*</span></label>
-                      <input type="text" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors" placeholder="Smith Properties LLC" required />
+                      <input 
+                        name="companyName"
+                        type="text" 
+                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors" 
+                        placeholder="Smith Properties LLC" 
+                        required 
+                      />
                     </div>
 
                     <div className="space-y-2">
                       <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Email <span className="text-red-500">*</span></label>
-                      <input type="email" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors" placeholder="john@smithproperties.com" required />
+                      <input 
+                        name="email"
+                        type="email" 
+                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors" 
+                        placeholder="john@smithproperties.com" 
+                        required 
+                      />
                     </div>
 
                     <div className="space-y-2">
                       <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Phone Number</label>
-                      <input type="tel" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors" placeholder="(555) 555-5555" />
+                      <input 
+                        name="phone"
+                        type="tel" 
+                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors" 
+                        placeholder="(555) 555-5555" 
+                      />
                     </div>
 
                     <div className="space-y-2">
                       <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Property Address <span className="text-red-500">*</span></label>
-                      <input type="text" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors" placeholder="123 Main Street, Suite 100, Dallas, TX 75201" required />
+                      <input 
+                        name="address"
+                        type="text" 
+                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors" 
+                        placeholder="123 Main Street, Suite 100, Dallas, TX 75201" 
+                        required 
+                      />
                       <p className="text-xs text-gray-400">Enter one property to start. We can add more later.</p>
                     </div>
 
@@ -128,7 +186,11 @@ const Contact: React.FC = () => {
                       <div className="space-y-2">
                         <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Property Type <span className="text-red-500">*</span></label>
                         <div className="relative">
-                          <select className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors appearance-none text-gray-600" required>
+                          <select 
+                            name="propertyType"
+                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors appearance-none text-gray-600" 
+                            required
+                          >
                             <option value="">Select Type...</option>
                             <option>Office</option>
                             <option>Retail</option>
@@ -146,18 +208,35 @@ const Contact: React.FC = () => {
 
                       <div className="space-y-2">
                         <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Approximate Sq Footage</label>
-                        <input type="text" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors" placeholder="45,000 sq ft" />
+                        <input 
+                          name="sqFootage"
+                          type="text" 
+                          className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors" 
+                          placeholder="45,000 sq ft" 
+                        />
                       </div>
                     </div>
 
                     <div className="space-y-2">
                       <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Anything else we should know?</label>
-                      <textarea className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors h-32 resize-none" placeholder="Recent storms, known damage, upcoming sale or refinance, etc."></textarea>
+                      <textarea 
+                        name="notes"
+                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors h-32 resize-none" 
+                        placeholder="Recent storms, known damage, upcoming sale or refinance, etc."
+                      ></textarea>
                     </div>
 
                     <div className="pt-4">
-                      <button type="submit" className="w-full bg-accent text-primary font-bold text-lg py-4 rounded-lg hover:bg-[#E6AC00] transition-all shadow-lg hover:-translate-y-0.5 flex items-center justify-center gap-2 group">
-                        Start Free Monitoring <Send className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                      <button 
+                        type="submit" 
+                        disabled={isSubmitting}
+                        className="w-full bg-accent text-primary font-bold text-lg py-4 rounded-lg hover:bg-[#E6AC00] transition-all shadow-lg hover:-translate-y-0.5 flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:bg-accent"
+                      >
+                        {isSubmitting ? (
+                          <>Sending... <Loader2 className="w-5 h-5 animate-spin" /></>
+                        ) : (
+                          <>Start Free Monitoring <Send className="w-5 h-5 transition-transform group-hover:translate-x-1" /></>
+                        )}
                       </button>
                       <p className="text-sm text-center text-gray-500 mt-4">
                         We'll analyze your property within 48 hours and email you with findings.
