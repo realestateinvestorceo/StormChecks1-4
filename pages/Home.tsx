@@ -401,67 +401,6 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* How It Works Section */}
-      <section id="how-it-works" className="bg-gray-50 py-24">
-        <div className="container mx-auto px-6">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6">
-              How It Works
-            </h2>
-            <p className="text-xl text-gray-600">
-              Free to start. You only pay if you recover.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-12 relative">
-            {/* Step 1 */}
-            <div className="flex flex-col items-center text-center">
-              <div className="w-full h-56 mb-6 rounded-xl overflow-hidden shadow-md group">
-                <img 
-                  src="https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/6965ddaf02f1be84b403b482.png" 
-                  alt="Free Monitoring Setup" 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-              <h3 className="text-xl font-bold text-primary mb-4">1. Free Monitoring Setup</h3>
-              <p className="text-gray-600 leading-relaxed">
-                We analyze your property's storm history for the past 2 years and set up continuous monitoring. If there's damage now, we'll find it. If a storm hits later, we'll alert you. No cost ever for this.
-              </p>
-            </div>
-
-            {/* Step 2 */}
-            <div className="flex flex-col items-center text-center">
-              <div className="w-full h-56 mb-6 rounded-xl overflow-hidden shadow-md group">
-                <img 
-                  src="https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/6965df0398efbde127424a70.png" 
-                  alt="Forensic Documentation" 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-              <h3 className="text-xl font-bold text-primary mb-4">2. Forensic Documentation</h3>
-              <p className="text-gray-600 leading-relaxed">
-                If damage exists, we deploy our field team to document every inch. We build the carrier-grade evidence file that proves your loss irrefutably.
-              </p>
-            </div>
-
-            {/* Step 3 */}
-            <div className="flex flex-col items-center text-center">
-              <div className="w-full h-56 mb-6 rounded-xl overflow-hidden shadow-md group">
-                <img 
-                  src="https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/6965e07a98efbd90424278f4.png" 
-                  alt="Claim Recovery" 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-              <h3 className="text-xl font-bold text-primary mb-4">3. Claim Recovery</h3>
-              <p className="text-gray-600 leading-relaxed">
-                We connect you with a vetted top-tier public adjuster. They use our evidence file to file the claim and negotiate the maximum settlement.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Free Monitoring Section */}
       <section className="bg-white py-24">
         <div className="container mx-auto px-6">

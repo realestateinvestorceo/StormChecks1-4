@@ -6,7 +6,7 @@ const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { name: 'How It Works', path: '/#how-it-works', isAnchor: true },
+    { name: 'How It Works', path: '/how-it-works', isAnchor: false },
     { name: 'Expert File', path: '/expert-file', isAnchor: false },
     { name: 'Case Work', path: '/case-work', isAnchor: false },
     { name: 'Leadership', path: '/leadership', isAnchor: false },
@@ -18,7 +18,7 @@ const Navbar: React.FC = () => {
         {/* Logo Section */}
         <Link to="/" className="flex items-center" onClick={() => setIsMobileMenuOpen(false)}>
           <img 
-            src="https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/6965eb1102f1be5aff055077.png" 
+            src="https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/6966f948415652622e320969.png" 
             alt="StormChecks" 
             className="w-36 md:w-40 h-auto"
           />

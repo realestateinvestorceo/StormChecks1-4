@@ -1,5 +1,5 @@
 import React from 'react';
-import { CloudLightning, Mail, Phone } from 'lucide-react';
+import { Mail, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
@@ -10,12 +10,13 @@ const Footer: React.FC = () => {
           
           {/* Brand Column */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-               <div className="p-1.5 bg-accent rounded-md">
-                 <CloudLightning className="w-5 h-5 text-primary" />
-               </div>
-               <span className="text-xl font-bold tracking-tight">StormChecks</span>
-            </div>
+            <Link to="/" className="inline-block">
+              <img 
+                src="https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/6966f948415652622e320969.png" 
+                alt="StormChecks" 
+                className="w-40 h-auto"
+              />
+            </Link>
             <p className="text-gray-400 leading-relaxed text-sm">
               Forensic Building Documentation
             </p>

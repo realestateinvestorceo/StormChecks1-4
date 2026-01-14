@@ -7,6 +7,7 @@ import Leadership from './pages/Leadership';
 import CaseWork from './pages/CaseWork';
 import ExpertFile from './pages/ExpertFile';
 import Contact from './pages/Contact';
+import HowItWorks from './pages/HowItWorks';
 
 const App: React.FC = () => {
   return (
@@ -16,6 +17,7 @@ const App: React.FC = () => {
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/how-it-works" element={<HowItWorks />} />
             <Route path="/leadership" element={<Leadership />} />
             <Route path="/case-work" element={<CaseWork />} />
             <Route path="/expert-file" element={<ExpertFile />} />
