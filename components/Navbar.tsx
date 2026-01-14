@@ -49,7 +49,7 @@ const Navbar: React.FC = () => {
 
         {/* CTA Button */}
         <div className="hidden lg:block">
-          <Link to="/contact" className="bg-accent text-primary px-6 py-3 rounded-lg font-bold hover:bg-[#E6AC00] transition-all shadow-lg hover:shadow-accent/20 hover:-translate-y-0.5 text-sm uppercase tracking-wide">
+          <Link to="/contact?focus=true" className="bg-accent text-primary px-6 py-3 rounded-lg font-bold hover:bg-[#E6AC00] transition-all shadow-lg hover:shadow-accent/20 hover:-translate-y-0.5 text-sm uppercase tracking-wide">
             Free Monitoring
           </Link>
         </div>
@@ -89,7 +89,7 @@ const Navbar: React.FC = () => {
               )
             ))}
             <Link
-              to="/contact"
+              to="/contact?focus=true"
               className="bg-accent text-primary px-5 py-3 rounded-md font-bold hover:bg-[#E6AC00] transition-colors text-center block mt-4"
               onClick={() => setIsMobileMenuOpen(false)}
             >

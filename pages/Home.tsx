@@ -1,5 +1,6 @@
 import React from 'react';
-import { ArrowRight, AlertTriangle, FileWarning, FileText, XCircle, Search, CheckCircle, Clock, Eye, Bell, Check } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ArrowRight, AlertTriangle, FileWarning, FileText, XCircle, Search, CheckCircle, Clock, Eye, Bell, Check, FileDown } from 'lucide-react';
 
 const Home: React.FC = () => {
   return (
@@ -55,10 +56,10 @@ const Home: React.FC = () => {
 
               {/* CTA Section */}
               <div className="flex flex-col items-start gap-3">
-                <button className="group bg-accent text-primary px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#E6AC00] transition-all shadow-[0_4px_20px_rgba(201,151,0,0.2)] hover:shadow-[0_4px_25px_rgba(201,151,0,0.35)] hover:-translate-y-0.5 flex items-center gap-2">
+                <Link to="/contact?focus=true" className="group bg-accent text-primary px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#E6AC00] transition-all shadow-[0_4px_20px_rgba(201,151,0,0.2)] hover:shadow-[0_4px_25px_rgba(201,151,0,0.35)] hover:-translate-y-0.5 flex items-center gap-2">
                   Get Free Storm Monitoring
                   <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-                </button>
+                </Link>
                 <p className="text-gray-500 text-sm font-medium pl-1">
                   2-year lookback + ongoing alerts. No cost, no obligation.
                 </p>
@@ -120,7 +121,7 @@ const Home: React.FC = () => {
             {/* Right Content Column - Image */}
             <div className="lg:col-span-5">
               <img 
-                src="https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/6965d042c7683b0a6afa318d.png" 
+                src="https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/696703aea3a114fbd0f5f05b.png" 
                 alt="Hidden storm damage on commercial building" 
                 className="w-full h-auto rounded-2xl shadow-lg"
               />
@@ -211,34 +212,35 @@ const Home: React.FC = () => {
             <div className="absolute top-0 right-0 w-64 h-64 bg-accent opacity-[0.03] rounded-full blur-3xl pointer-events-none"></div>
 
             <h3 className="text-2xl font-bold mb-10 text-center relative z-10">The Difference</h3>
-            <div className="grid md:grid-cols-2 gap-10 md:gap-16 relative z-10">
+            
+            <div className="grid md:grid-cols-2 gap-10 md:gap-16 relative z-10 items-stretch">
               {/* Left Column */}
-              <div className="space-y-4">
-                <div className="flex items-center space-x-3 text-red-500 mb-2">
+              <div className="flex flex-col">
+                <div className="flex items-center space-x-3 text-red-500 mb-6 h-10">
                   <XCircle className="w-8 h-8 flex-shrink-0" />
-                  <h4 className="font-bold text-xl text-white">Standard Contractor Bid</h4>
+                  <h4 className="font-bold text-xl text-white leading-tight">Standard Contractor Bid</h4>
                 </div>
-                <div className="bg-white/5 p-6 rounded-lg italic text-gray-400 border border-white/5 leading-relaxed">
+                <div className="flex-grow bg-white/5 p-6 rounded-lg italic text-gray-400 border border-white/5 leading-relaxed min-h-[140px]">
                   "Replace roof due to hail damage. Cost: $250,000."
                 </div>
-                <p className="font-bold text-red-400 tracking-wide text-sm flex items-center">
+                <p className="font-bold text-red-400 tracking-wide text-sm flex items-center mt-6 h-6">
                   RESULT: DENIED (INSUFFICIENT PROOF)
                 </p>
               </div>
 
               {/* Right Column */}
-              <div className="space-y-4 relative">
-                {/* Vertical Divider for desktop */}
-                <div className="hidden md:block absolute -left-8 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/10 to-transparent"></div>
+              <div className="flex flex-col relative">
+                {/* Vertical Divider for desktop - Centered precisely */}
+                <div className="hidden md:block absolute -left-5 md:-left-8 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/10 to-transparent"></div>
                 
-                <div className="flex items-center space-x-3 text-green-500 mb-2">
+                <div className="flex items-center space-x-3 text-green-500 mb-6 h-10">
                   <CheckCircle className="w-8 h-8 flex-shrink-0" />
-                  <h4 className="font-bold text-xl text-white">StormChecks Forensic File</h4>
+                  <h4 className="font-bold text-xl text-white leading-tight">StormChecks Forensic File</h4>
                 </div>
-                <div className="bg-white/5 p-6 rounded-lg text-gray-300 border border-white/5 leading-relaxed">
+                <div className="flex-grow bg-white/5 p-6 rounded-lg text-gray-300 border border-white/5 leading-relaxed min-h-[140px]">
                   120-page engineering report with NOAA weather data, microscopic impact analysis, storm-to-damage linkage, and carrier-compliant Xactimate estimate.
                 </div>
-                <p className="font-bold text-green-400 tracking-wide text-sm flex items-center">
+                <p className="font-bold text-green-400 tracking-wide text-sm flex items-center mt-6 h-6">
                   RESULT: APPROVED ($250,000+ PAID)
                 </p>
               </div>
@@ -260,19 +262,19 @@ const Home: React.FC = () => {
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Card 1 */}
-            <div className="bg-gray-50 rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 group overflow-hidden">
+            {/* Card 1 - Marina */}
+            <div className="bg-gray-50 rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 group overflow-hidden flex flex-col">
               <div className="h-48 w-full relative overflow-hidden">
                  <img 
                    src="https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/6965fa79c7683b6702ff96ee.png" 
-                   alt="Commercial Marina" 
+                   alt="Marina & Boat Storage" 
                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                  />
               </div>
-              <div className="p-6">
+              <div className="p-6 flex flex-col flex-grow">
                 <div className="mb-4">
-                  <h3 className="font-bold text-lg text-primary">Commercial Marina</h3>
-                  <p className="text-gray-500 text-sm">Coastal Florida</p>
+                  <h3 className="font-bold text-lg text-primary">Marina & Boat Storage</h3>
+                  <p className="text-gray-500 text-sm">Beaufort, NC</p>
                 </div>
                 
                 <div className="space-y-3 mb-6">
@@ -286,25 +288,69 @@ const Home: React.FC = () => {
                   </div>
                 </div>
 
-                <p className="text-gray-600 text-sm leading-relaxed italic">
-                  "Carrier denied the claim citing 'lack of causation.' Our file linked damage to a specific hurricane date. Denial overturned."
-                </p>
+                <a 
+                  href="https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/6965ec2f98efbd7ba643ec65.pdf" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="mt-auto flex items-center justify-center gap-2 w-full py-2 border border-accent text-accent hover:bg-accent hover:text-white transition-all rounded-lg text-sm font-bold"
+                >
+                  <FileDown className="w-4 h-4" />
+                  Download Case File
+                </a>
               </div>
             </div>
 
-            {/* Card 2 */}
-            <div className="bg-gray-50 rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 group overflow-hidden">
+            {/* Card 2 - Industrial Property (Denver) */}
+            <div className="bg-gray-50 rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 group overflow-hidden flex flex-col">
               <div className="h-48 w-full relative overflow-hidden">
                  <img 
-                   src="https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/69661069ccf2c6275ef150b2.png" 
-                   alt="Industrial Warehouse" 
+                   src="https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/69661165f8a93b4590242c9f.png" 
+                   alt="Industrial Property" 
                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                  />
               </div>
-              <div className="p-6">
+              <div className="p-6 flex flex-col flex-grow">
                 <div className="mb-4">
-                  <h3 className="font-bold text-lg text-primary">Industrial Warehouse</h3>
-                  <p className="text-gray-500 text-sm">Texas</p>
+                  <h3 className="font-bold text-lg text-primary">Industrial Property</h3>
+                  <p className="text-gray-500 text-sm">Denver, CO</p>
+                </div>
+                
+                <div className="space-y-3 mb-6">
+                  <div className="flex justify-between items-center bg-white p-3 rounded border border-gray-100">
+                     <span className="text-xs font-semibold text-gray-500 uppercase">Initial</span>
+                     <span className="bg-red-100 text-red-700 px-2 py-0.5 rounded text-sm font-bold">$30,000</span>
+                  </div>
+                  <div className="flex justify-between items-center bg-white p-3 rounded border border-gray-100 shadow-sm">
+                     <span className="text-xs font-semibold text-gray-500 uppercase">Final</span>
+                     <span className="bg-green-100 text-green-700 px-2 py-0.5 rounded text-sm font-bold">$730,000</span>
+                  </div>
+                </div>
+
+                <a 
+                  href="https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/6965ec2ff8a93b85461fc86b.pdf" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="mt-auto flex items-center justify-center gap-2 w-full py-2 border border-accent text-accent hover:bg-accent hover:text-white transition-all rounded-lg text-sm font-bold"
+                >
+                  <FileDown className="w-4 h-4" />
+                  Download Case File
+                </a>
+              </div>
+            </div>
+
+            {/* Card 3 - Self-Storage (Beaufort) */}
+            <div className="bg-gray-50 rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 group overflow-hidden flex flex-col">
+              <div className="h-48 w-full relative overflow-hidden">
+                 <img 
+                   src="https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/69660fe3ccf2c63741f13760.png" 
+                   alt="Self-Storage Facility" 
+                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                 />
+              </div>
+              <div className="p-6 flex flex-col flex-grow">
+                <div className="mb-4">
+                  <h3 className="font-bold text-lg text-primary">Self-Storage Facility</h3>
+                  <p className="text-gray-500 text-sm">Beaufort, NC</p>
                 </div>
                 
                 <div className="space-y-3 mb-6">
@@ -314,77 +360,57 @@ const Home: React.FC = () => {
                   </div>
                   <div className="flex justify-between items-center bg-white p-3 rounded border border-gray-100 shadow-sm">
                      <span className="text-xs font-semibold text-gray-500 uppercase">Final</span>
-                     <span className="bg-green-100 text-green-700 px-2 py-0.5 rounded text-sm font-bold">$3,400,000</span>
+                     <span className="bg-green-100 text-green-700 px-2 py-0.5 rounded text-sm font-bold">$3,900,000</span>
                   </div>
                 </div>
 
-                <p className="text-gray-600 text-sm leading-relaxed italic">
-                  "Roof damage dismissed as 'wear and tear.' StormChecks documented hail impact patterns proving storm origin."
-                </p>
+                <a 
+                  href="https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/6965ec2ff8a93bb2fc1fc86c.pdf" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="mt-auto flex items-center justify-center gap-2 w-full py-2 border border-accent text-accent hover:bg-accent hover:text-white transition-all rounded-lg text-sm font-bold"
+                >
+                  <FileDown className="w-4 h-4" />
+                  Download Case File
+                </a>
               </div>
             </div>
 
-            {/* Card 3 */}
-            <div className="bg-gray-50 rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 group overflow-hidden">
+            {/* Card 4 - Retail Center (Mexico, MO) */}
+            <div className="bg-gray-50 rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 group overflow-hidden flex flex-col">
               <div className="h-48 w-full relative overflow-hidden">
                  <img 
-                   src="https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/69660fe3ccf2c63741f13760.png" 
-                   alt="Self-Storage Facility" 
+                   src="https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/696611cbccf2c6af04f18876.png" 
+                   alt="Retail Center" 
                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                  />
               </div>
-              <div className="p-6">
+              <div className="p-6 flex flex-col flex-grow">
                 <div className="mb-4">
-                  <h3 className="font-bold text-lg text-primary">Self-Storage Facility</h3>
-                  <p className="text-gray-500 text-sm">Georgia</p>
+                  <h3 className="font-bold text-lg text-primary">Retail Center</h3>
+                  <p className="text-gray-500 text-sm">Mexico, MO</p>
                 </div>
                 
                 <div className="space-y-3 mb-6">
                   <div className="flex justify-between items-center bg-white p-3 rounded border border-gray-100">
                      <span className="text-xs font-semibold text-gray-500 uppercase">Initial</span>
-                     <span className="bg-red-100 text-red-700 px-2 py-0.5 rounded text-sm font-bold">$725,000</span>
+                     <span className="bg-red-100 text-red-700 px-2 py-0.5 rounded text-sm font-bold">$587,000</span>
                   </div>
                   <div className="flex justify-between items-center bg-white p-3 rounded border border-gray-100 shadow-sm">
                      <span className="text-xs font-semibold text-gray-500 uppercase">Final</span>
-                     <span className="bg-green-100 text-green-700 px-2 py-0.5 rounded text-sm font-bold">$6,500,000</span>
+                     <span className="bg-green-100 text-green-700 px-2 py-0.5 rounded text-sm font-bold">$3,900,000</span>
                   </div>
                 </div>
 
-                <p className="text-gray-600 text-sm leading-relaxed italic">
-                  "Carrier lowballed by 90%. Our forensic file proved damage scope was 9x their estimate."
-                </p>
-              </div>
-            </div>
-
-            {/* Card 4 */}
-            <div className="bg-gray-50 rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 group overflow-hidden">
-              <div className="h-48 w-full relative overflow-hidden">
-                 <img 
-                   src="https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/69661112c7683b0b980256d8.png" 
-                   alt="Retail Strip Center" 
-                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                 />
-              </div>
-              <div className="p-6">
-                <div className="mb-4">
-                  <h3 className="font-bold text-lg text-primary">Retail Strip Center</h3>
-                  <p className="text-gray-500 text-sm">Midwest</p>
-                </div>
-                
-                <div className="space-y-3 mb-6">
-                  <div className="flex justify-between items-center bg-white p-3 rounded border border-gray-100">
-                     <span className="text-xs font-semibold text-gray-500 uppercase">Initial</span>
-                     <span className="bg-red-100 text-red-700 px-2 py-0.5 rounded text-sm font-bold">$150,000</span>
-                  </div>
-                  <div className="flex justify-between items-center bg-white p-3 rounded border border-gray-100 shadow-sm">
-                     <span className="text-xs font-semibold text-gray-500 uppercase">Final</span>
-                     <span className="bg-green-100 text-green-700 px-2 py-0.5 rounded text-sm font-bold">$1,700,000</span>
-                  </div>
-                </div>
-
-                <p className="text-gray-600 text-sm leading-relaxed italic">
-                  "Initial offer covered 10% of actual damage. Full documentation forced a complete reassessment."
-                </p>
+                <a 
+                  href="https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/6965ec2f95f9f9940ffe58a3.pdf" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="mt-auto flex items-center justify-center gap-2 w-full py-2 border border-accent text-accent hover:bg-accent hover:text-white transition-all rounded-lg text-sm font-bold"
+                >
+                  <FileDown className="w-4 h-4" />
+                  Download Case File
+                </a>
               </div>
             </div>
           </div>
@@ -394,9 +420,9 @@ const Home: React.FC = () => {
                 StormChecks provides forensic documentation only. All settlements negotiated by independent public adjusters or attorneys engaged by the property owner.
               </p>
               
-              <a href="#" className="inline-flex items-center text-primary font-bold hover:text-accent transition-colors">
+              <Link to="/case-work" className="inline-flex items-center text-primary font-bold hover:text-accent transition-colors">
                 View All Case Studies <ArrowRight className="w-4 h-4 ml-2" />
-              </a>
+              </Link>
            </div>
         </div>
       </section>
@@ -454,9 +480,9 @@ const Home: React.FC = () => {
           </div>
 
           <div className="text-center">
-            <button className="bg-accent text-primary px-10 py-4 rounded-lg font-bold text-lg hover:bg-[#E6AC00] transition-all shadow-lg hover:-translate-y-1">
+            <Link to="/contact?focus=true" className="inline-block bg-accent text-primary px-10 py-4 rounded-lg font-bold text-lg hover:bg-[#E6AC00] transition-all shadow-lg hover:-translate-y-1">
               Start Free Monitoring
-            </button>
+            </Link>
             <p className="text-gray-500 text-sm mt-4 font-medium">
               Takes 2 minutes. We just need your property address.
             </p>
@@ -510,9 +536,9 @@ const Home: React.FC = () => {
           </div>
 
           <div className="flex flex-col items-center gap-4">
-            <button className="bg-accent text-primary px-10 py-4 rounded-lg font-bold text-lg hover:bg-[#E6AC00] transition-all shadow-lg hover:-translate-y-1">
+            <Link to="/contact?focus=true" className="inline-block bg-accent text-primary px-10 py-4 rounded-lg font-bold text-lg hover:bg-[#E6AC00] transition-all shadow-lg hover:-translate-y-1">
               Start Free Monitoring
-            </button>
+            </Link>
             <p className="text-gray-500 text-sm font-medium">
               Takes 2 minutes. No obligation. Completely confidential.
             </p>
@@ -535,9 +561,9 @@ const Home: React.FC = () => {
             Storm damage claims have a 1–3 year filing deadline depending on your state. After that, the money is gone — no matter how much damage exists. If your building has been through a storm in the last 3 years, now is the time to find out what you're owed.
           </p>
 
-          <button className="bg-accent text-primary px-10 py-4 rounded-lg font-bold text-lg hover:bg-[#E6AC00] transition-all shadow-[0_4px_20px_rgba(201,151,0,0.2)] hover:shadow-[0_4px_25px_rgba(201,151,0,0.35)] hover:-translate-y-1">
+          <Link to="/contact?focus=true" className="inline-block bg-accent text-primary px-10 py-4 rounded-lg font-bold text-lg hover:bg-[#E6AC00] transition-all shadow-[0_4px_20px_rgba(201,151,0,0.2)] hover:shadow-[0_4px_25px_rgba(201,151,0,0.35)] hover:-translate-y-1">
             Start Free Monitoring
-          </button>
+          </Link>
         </div>
       </section>
     </>

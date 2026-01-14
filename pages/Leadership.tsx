@@ -1,5 +1,5 @@
 import React from 'react';
-import { User, Quote } from 'lucide-react';
+import { Quote } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Leadership: React.FC = () => {
@@ -41,10 +41,14 @@ const Leadership: React.FC = () => {
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 lg:gap-24 items-center">
             
-            {/* Left Column - Image Placeholder */}
+            {/* Left Column - Founder Image */}
             <div className="relative group mx-auto md:mx-0 w-full max-w-md md:max-w-none">
-                <div className="aspect-[4/5] bg-gray-100 rounded-xl flex items-center justify-center overflow-hidden shadow-lg border border-gray-200 relative z-10">
-                    <User className="w-32 h-32 text-gray-300" strokeWidth={1} />
+                <div className="aspect-[4/5] bg-gray-100 rounded-xl overflow-hidden shadow-lg border border-gray-200 relative z-10">
+                    <img 
+                      src="https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/696711e441565269703ea4cc.png" 
+                      alt="Michael Paul - Founder of StormChecks" 
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
                 </div>
                 {/* Decorative border offset */}
                 <div className="absolute -z-0 top-6 -left-6 w-full h-full border-2 border-accent/30 rounded-xl hidden md:block"></div>
@@ -65,7 +69,7 @@ const Leadership: React.FC = () => {
                   He reviewed thousands of files. He learned exactly what documentation meets the internal approval thresholds, what language carriers accept, and what gaps adjusters exploit to deny valid claims.
                 </p>
                 <p>
-                  Most claims don't fail because the damage isn't real. They fail because the paperwork speaks 'contractor' while the carrier speaks 'policy.' If your documentation doesn't map directly to the internal checklists adjusters use, the claim gets rejected — even when the damage is legitimate.
+                  Most claims don't fail because the damage isn't real. They fail because the paperwork speaks 'contractor' while the carrier speaks 'policy.' If your documentation doesn't map damage directly to the internal checklists adjusters use, the claim gets rejected — even when the damage is legitimate.
                 </p>
                 <p>
                   Michael founded StormChecks to fix that. We build forensic files designed to pass the same tests he used to administer. Not contractor estimates. Not photos without context. Carrier-grade evidence that meets the exact standards insurers use to make decisions.
@@ -164,7 +168,7 @@ const Leadership: React.FC = () => {
           </h2>
 
           <div className="flex flex-col items-center gap-4">
-            <Link to="/contact" className="bg-accent text-primary px-10 py-4 rounded-lg font-bold text-lg hover:bg-[#E6AC00] transition-all shadow-lg hover:-translate-y-1">
+            <Link to="/contact?focus=true" className="bg-accent text-primary px-10 py-4 rounded-lg font-bold text-lg hover:bg-[#E6AC00] transition-all shadow-lg hover:-translate-y-1">
               Start Free Monitoring
             </Link>
             <p className="text-gray-500 text-sm font-medium">

@@ -289,7 +289,7 @@ const ExpertFile: React.FC = () => {
           </p>
 
           <div className="flex flex-col items-center gap-4">
-            <Link to="/contact" className="bg-accent text-primary px-10 py-4 rounded-lg font-bold text-lg hover:bg-[#E6AC00] transition-all shadow-lg hover:-translate-y-1">
+            <Link to="/contact?focus=true" className="bg-accent text-primary px-10 py-4 rounded-lg font-bold text-lg hover:bg-[#E6AC00] transition-all shadow-lg hover:-translate-y-1">
               Start Free Monitoring
             </Link>
             <p className="text-gray-500 text-sm font-medium">

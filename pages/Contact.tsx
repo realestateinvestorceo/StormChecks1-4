@@ -1,19 +1,31 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Mail, Phone, Send, Check, CheckCircle } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 
 const Contact: React.FC = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [searchParams] = useSearchParams();
   const formRef = useRef<HTMLElement>(null);
   const nameInputRef = useRef<HTMLInputElement>(null);
 
-  const scrollToForm = () => {
-    formRef.current?.scrollIntoView({ behavior: 'smooth' });
+  const scrollToForm = (smooth = true) => {
+    formRef.current?.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto' });
     // Small delay to ensure smooth scroll finishes or starts before focus
     setTimeout(() => {
       nameInputRef.current?.focus();
     }, 500);
   };
+
+  // Effect to handle deep linking and auto-focus from other pages
+  useEffect(() => {
+    if (searchParams.get('focus') === 'true') {
+      // Give the page a moment to render before scrolling/focusing
+      const timer = setTimeout(() => {
+        scrollToForm(true);
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [searchParams]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -314,7 +326,7 @@ const Contact: React.FC = () => {
           </p>
 
           <button 
-            onClick={scrollToForm}
+            onClick={() => scrollToForm(true)}
             className="bg-accent text-primary px-10 py-4 rounded-lg font-bold text-lg hover:bg-[#E6AC00] transition-all shadow-[0_4px_20px_rgba(201,151,0,0.2)] hover:shadow-[0_4px_25px_rgba(201,151,0,0.35)] hover:-translate-y-1"
           >
             Start Free Monitoring

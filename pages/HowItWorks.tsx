@@ -91,7 +91,7 @@ const HowItWorks: React.FC = () => {
           </h2>
 
           <div className="flex flex-col items-center gap-4">
-            <Link to="/contact" className="bg-accent text-primary px-10 py-4 rounded-lg font-bold text-lg hover:bg-[#E6AC00] transition-all shadow-lg hover:-translate-y-1 flex items-center gap-2 group">
+            <Link to="/contact?focus=true" className="bg-accent text-primary px-10 py-4 rounded-lg font-bold text-lg hover:bg-[#E6AC00] transition-all shadow-lg hover:-translate-y-1 flex items-center gap-2 group">
               Start Free Monitoring
               <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
             </Link>
