@@ -8,6 +8,8 @@ import CaseWork from './pages/CaseWork';
 import ExpertFile from './pages/ExpertFile';
 import Contact from './pages/Contact';
 import HowItWorks from './pages/HowItWorks';
+import Privacy from './pages/Privacy';
+import Terms from './pages/Terms';
 
 const App: React.FC = () => {
   return (
@@ -22,6 +24,8 @@ const App: React.FC = () => {
             <Route path="/case-work" element={<CaseWork />} />
             <Route path="/expert-file" element={<ExpertFile />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/terms" element={<Terms />} />
           </Routes>
         </main>
         <Footer />

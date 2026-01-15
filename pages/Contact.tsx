@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Mail, Phone, Send, Check, CheckCircle, Loader2 } from 'lucide-react';
+import { Mail, Phone, Send, Check, CheckCircle, Loader2, MapPin, AlertCircle } from 'lucide-react';
 import { Link, useSearchParams } from 'react-router-dom';
 
 const Contact: React.FC = () => {
@@ -7,6 +7,7 @@ const Contact: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [searchParams] = useSearchParams();
   const formRef = useRef<HTMLElement>(null);
+  const contactInfoRef = useRef<HTMLDivElement>(null);
   const nameInputRef = useRef<HTMLInputElement>(null);
 
   const scrollToForm = (smooth = true) => {
@@ -17,12 +18,22 @@ const Contact: React.FC = () => {
     }, 500);
   };
 
+  const scrollToContactInfo = (smooth = true) => {
+    contactInfoRef.current?.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', block: 'center' });
+  };
+
   // Effect to handle deep linking and auto-focus from other pages
   useEffect(() => {
     if (searchParams.get('focus') === 'true') {
-      // Give the page a moment to render before scrolling/focusing
       const timer = setTimeout(() => {
         scrollToForm(true);
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+    
+    if (searchParams.get('contact') === 'true') {
+      const timer = setTimeout(() => {
+        scrollToContactInfo(true);
       }, 100);
       return () => clearTimeout(timer);
     }
@@ -324,25 +335,55 @@ const Contact: React.FC = () => {
                 </div>
               </div>
 
-              <div className="pt-10 border-t border-gray-200">
-                <h3 className="font-bold text-gray-900 text-lg mb-6">Prefer to talk to someone?</h3>
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-3 text-gray-600">
-                    <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center flex-shrink-0">
-                         <Phone className="w-4 h-4 text-accent" />
+              <div className="pt-10 border-t border-gray-200" ref={contactInfoRef} id="contact-info">
+                <h3 className="font-bold text-gray-900 text-lg mb-6">Contact Us</h3>
+                <div className="space-y-6">
+                  <div className="flex items-center space-x-3 text-gray-600 group">
+                    <div className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center flex-shrink-0 border border-gray-100 transition-colors group-hover:bg-accent/5 group-hover:border-accent/20">
+                        <Mail className="w-5 h-5 text-accent" />
                     </div>
-                    <a href="tel:+18018212530" className="hover:text-primary transition-colors font-medium text-lg">
-                      Call us: +1 801-821-2530
-                    </a>
-                  </div>
-                  <div className="flex items-center space-x-3 text-gray-600">
-                    <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center flex-shrink-0">
-                        <Mail className="w-4 h-4 text-accent" />
+                    <div className="flex flex-col">
+                      <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Email</span>
+                      <a href="mailto:info@stormchecks.com" className="hover:text-primary transition-colors font-medium text-lg leading-tight">
+                        info@stormchecks.com
+                      </a>
                     </div>
-                    <a href="mailto:info@stormchecks.com" className="hover:text-primary transition-colors font-medium text-lg">
-                      Email: info@stormchecks.com
-                    </a>
                   </div>
+
+                  <div className="flex items-center space-x-3 text-gray-600 group">
+                    <div className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center flex-shrink-0 border border-gray-100 transition-colors group-hover:bg-accent/5 group-hover:border-accent/20">
+                         <Phone className="w-5 h-5 text-accent" />
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Phone</span>
+                      <a href="tel:+18018212530" className="hover:text-primary transition-colors font-medium text-lg leading-tight">
+                        +1 801-821-2530
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center space-x-3 text-gray-600 group">
+                    <div className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center flex-shrink-0 border border-gray-100 transition-colors group-hover:bg-accent/5 group-hover:border-accent/20">
+                         <MapPin className="w-5 h-5 text-accent" />
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Address</span>
+                      <span className="font-medium text-lg leading-tight">
+                        StormChecks, Salt Lake City, Utah
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Important Reminder Block */}
+                <div className="mt-10 p-6 bg-gray-50 rounded-xl border-l-4 border-accent shadow-sm">
+                  <div className="flex items-start gap-3 mb-2">
+                    <AlertCircle className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                    <h4 className="font-bold text-primary">Important Reminder</h4>
+                  </div>
+                  <p className="text-sm text-gray-600 leading-relaxed italic">
+                    StormChecks provides forensic documentation services. StormChecks is not a public adjusting firm, claims negotiator, or settlement advocate. StormChecks does not file insurance claims, interpret policy language, or participate in settlement negotiations.
+                  </p>
                 </div>
               </div>
             </div>
