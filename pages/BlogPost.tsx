@@ -1,7 +1,15 @@
 import React, { useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Clock, Calendar, Share2, AlertCircle, ArrowRight } from 'lucide-react';
+import { ArrowLeft, Clock, Calendar, Share2, AlertCircle, ArrowRight, CheckCircle2, XCircle, TrendingUp, Microscope, ClipboardCheck, ShieldCheck } from 'lucide-react';
 import { blogArticles } from './Resources';
+
+// Section Title Component to ensure consistent size
+// Updated to 24px as per user request.
+const SectionTitle: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <h2 className="text-[24px] font-bold text-primary mb-8 mt-16 leading-tight">
+    {children}
+  </h2>
+);
 
 const BlogPost: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -26,100 +34,241 @@ const BlogPost: React.FC = () => {
     );
   }
 
-  // Get 3 other articles for "Read Next" section
   const readNextArticles = blogArticles
     .filter(a => a.id !== id)
-    .sort(() => 0.5 - Math.random()) // Shuffle a bit
+    .sort(() => 0.5 - Math.random())
     .slice(0, 3);
 
-  // Helper component to render article body content based on ID
   const renderContent = (id: string) => {
     switch (id) {
-      case '1':
+      case 'from-0-to-3-9m-overturning-a-lack-of-causation-denial': // Success Story
         return (
-          <>
-            <p>In 2022, a major hurricane swept through coastal North Carolina. Among the casualties was a sprawling marina and boat storage facility. The owners, diligent about their coverage, filed a claim for what appeared to be obvious wind and surge damage to their steel structures and roofing systems.</p>
-            <h3>The Initial Denial</h3>
-            <p>The carrier's adjuster arrived, spent three hours on site, and issued a full denial within 14 days. The reason? "Lack of causation." They claimed the metal fatigue and fastener failures were the result of long-term coastal corrosion and "pre-existing wear and tear," rather than the hurricane event.</p>
-            <div className="bg-primary/5 border-l-4 border-accent p-6 my-8 rounded-r-lg">
-              <p className="font-medium text-primary italic">"The carrier wasn't lying about the corrosion—it existed. But they were using it as a smoke screen to ignore the catastrophic structural failure caused by 110mph wind gusts."</p>
+          <div className="space-y-6">
+            <SectionTitle>Overview Summary</SectionTitle>
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-8 mb-10 overflow-hidden relative">
+              <div className="absolute top-0 right-0 p-4 opacity-5">
+                <TrendingUp size={120} />
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 relative z-10">
+                <div>
+                  <p className="text-xs text-gray-500 font-bold uppercase mb-1">Location</p>
+                  <p className="text-primary font-bold">Beaufort, NC</p>
+                </div>
+                <div>
+                  <p className="text-xs text-gray-500 font-bold uppercase mb-1">Type</p>
+                  <p className="text-primary font-bold">Marina</p>
+                </div>
+                <div>
+                  <p className="text-xs text-gray-500 font-bold uppercase mb-1">Initial</p>
+                  <p className="text-red-600 font-bold">$0</p>
+                </div>
+                <div>
+                  <p className="text-xs text-gray-500 font-bold uppercase mb-1">Final</p>
+                  <p className="text-green-600 font-bold">$3.9M</p>
+                </div>
+              </div>
             </div>
-            <h3>How StormChecks Overturned It</h3>
-            <p>Our team didn't just take photos. We pulled the exact NOAA meteorological coordinates for the eye wall passage. We performed microscopic analysis on the fastener apertures, proving that the metal had "ovaled" recently due to high-velocity lateral tension—a signature of wind-driven structural racking, not slow corrosion.</p>
-            <p>We built a 140-page Expert File. When the carrier saw the level of forensic specificity, they didn't just reopen the file. They settled for $3.9M without going to appraisal.</p>
-          </>
+            <p>A high-value marina facility in North Carolina suffered catastrophic structural fatigue following hurricane eyewall passage. The primary challenge was proving structural racking in metal buildings where the envelope appeared mostly intact, but the mechanical stability was compromised.</p>
+
+            <SectionTitle>The Challenge (The Denial)</SectionTitle>
+            <p>The carrier's adjuster spent less than 4 hours on-site and issued a total denial. They argued that the "ovaling" of fasteners and structural drift was a result of long-term coastal corrosion and "pre-existing wear and tear." They used Eye Passage data from a distant airport to claim wind speeds at the marina were below the design threshold for damage.</p>
+
+            <SectionTitle>The Forensic Strategy</SectionTitle>
+            <p>StormChecks extracted site-specific NOAA radar data to prove Eye Passage directly over the GPS coordinates. We deployed a forensic team to perform microscopic aperture analysis on the fasteners, proving the metal deformation occurred recently under high-velocity lateral loads—not slow-growth corrosion. We mapped the "ovaling" patterns to the eye-wall directionality recorded on the day of loss.</p>
+
+            <SectionTitle>The Outcome</SectionTitle>
+            <p>Faced with a 140-page Expert File documenting irrefutable causation, the carrier rescinded the denial. The file was settled for the full replacement value of $3,900,000 without the need for litigation or appraisal, ensuring the facility could be restored to full structural safety.</p>
+          </div>
         );
-      case '2':
+
+      case 'inside-the-carriers-mind-why-valid-claims-get-rejected': // Insurance Insights
         return (
-          <>
-            <p>Most commercial property owners view the insurance claim process as a negotiation. Inside the carrier's office, it's viewed as a "defensive audit."</p>
-            <p>Our founder, Michael Paul, spent two decades behind those closed doors. He knows that every adjuster has a silent checklist. If your claim doesn't check the boxes, it goes to the bottom of the pile—or the denial bin.</p>
-            <h3>The 3 Main "Denial Triggers"</h3>
-            <ul>
-              <li><strong>The Vague Description:</strong> Using terms like "roof looks bad" instead of "latent mechanical fracture of the bitumen substrate."</li>
-              <li><strong>The Missing Storm:</strong> Not citing a specific weather event that aligns with the carrier's proprietary data sets.</li>
-              <li><strong>The Contractor Bid:</strong> Submitting a simple price quote instead of a forensic causation narrative.</li>
-            </ul>
-            <p>Carriers love contractor bids because they are easy to lowball. They have no forensic weight. By providing an "Expert File" instead of a "Bid," you take the leverage away from the carrier's internal audit team.</p>
-          </>
+          <div className="space-y-6">
+            <SectionTitle>Overview Summary</SectionTitle>
+            <p>Insurance carriers have optimized their claims departments to operate as "defensive audit" units. This report breaks down the unwritten internal checklists that adjusters use to flag commercial property files for automatic denial and how asset managers can protect their portfolio value.</p>
+
+            <SectionTitle>The Problem Statement</SectionTitle>
+            <p>The majority of commercial claims fail because they are documented using construction standards rather than policy standards. Carriers are legally looking for reasons to exclude damage. Without a forensic Nexus between the storm event and the physical damage, a valid claim is often treated as deferred maintenance.</p>
+
+            <SectionTitle>Myth vs. Reality</SectionTitle>
+            <div className="grid md:grid-cols-2 gap-4 my-10">
+              <div className="p-6 bg-red-50 rounded-lg border border-red-100">
+                <p className="font-bold text-red-800 mb-2">Myth</p>
+                <p className="text-sm">"If my roofer says there is hail damage, the insurance company has to pay the claim."</p>
+              </div>
+              <div className="p-6 bg-green-50 rounded-lg border border-green-100">
+                <p className="font-bold text-green-800 mb-2">Reality</p>
+                <p className="text-sm">"The carrier only pays if documentation establishes an irrefutable Nexus to a specific storm date."</p>
+              </div>
+            </div>
+
+            <SectionTitle>Financial Impact (CapEx/IRR)</SectionTitle>
+            <p>Unrecognized storm damage is a silent drain on Net Operating Income (NOI). When damage is found years later—after filing windows close—the $500k roof replacement comes out of your CapEx budget instead of the carrier's reserves. This suppresses the asset's IRR and lowers the eventual disposition price for institutional investors.</p>
+
+            <SectionTitle>The Solution Framework</SectionTitle>
+            <p>Bypass the carrier's defensive audit by providing a "Pre-Approved" file. This involves building a forensic-grade Expert File that includes meteorological verification, microscopic impact proof, and Xactimate scopes that map exactly to carrier internal decision-making thresholds.</p>
+          </div>
         );
-      case '3':
+
+      case 'the-science-of-storm-nexus-meteorological-coordinate-verification': // Technical Analysis
         return (
-          <>
-            <p>In forensic engineering, "Storm Nexus" is the proven link between a meteorological event and physical property damage. Without a nexus, you don't have a claim—you have a maintenance problem.</p>
-            <h3>The Power of Coordinates</h3>
-            <p>General weather reports (like those from local news) aren't enough for commercial claims. Carriers use high-resolution radar data that can show hail size variance within a single city block. If your claim says "hail in April" but the carrier's radar shows the 2-inch hail core missed your building by 300 yards, you're done.</p>
-            <p>At StormChecks, we verify coordinates using multiple sources:</p>
-            <ul>
-              <li>National Oceanic and Atmospheric Administration (NOAA) archives.</li>
-              <li>Private radar-matching algorithms.</li>
-              <li>On-site impact directionality (measuring "spatter" and "dings" to verify wind direction).</li>
-            </ul>
-            <p>This level of technical verification makes it mathematically impossible for a carrier to claim "wear and tear" when the data shows a catastrophic impact occurred on your specific roof at 2:14 PM on a Tuesday.</p>
-          </>
+          <div className="space-y-6">
+            <SectionTitle>Overview Summary</SectionTitle>
+            <p>Establishing an irrefutable "Storm Nexus" requires more than just a weather report. This analysis details the engineering methodology required to link microscopic physical findings to site-specific meteorological coordinates.</p>
+
+            <SectionTitle>Material Vulnerability Overview</SectionTitle>
+            <p>Building envelopes are susceptible to "Latent Failure"—damage that exists but isn't visible during a standard walk-through. For TPO and EPDM membranes, hail impact energy crushes the insulation board (isocyanurate) underneath the surface, creating a "bruise" that inevitably leads to membrane mat fracture during thermal cycles.</p>
+
+            <SectionTitle>The Lifecycle of Failure</SectionTitle>
+            <ol className="space-y-8 my-10">
+              <li className="flex gap-4">
+                <div className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center shrink-0 font-bold">1</div>
+                <div>
+                  <p className="font-bold text-primary">Substrate Trauma</p>
+                  <p className="text-gray-600 text-sm">Initial impact crushes substrate. The surface appears fine. No leak occurs. Adjusters call this "cosmetic."</p>
+                </div>
+              </li>
+              <li className="flex gap-4">
+                <div className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center shrink-0 font-bold">2</div>
+                <div>
+                  <p className="font-bold text-primary">Thermal Stressing</p>
+                  <p className="text-gray-600 text-sm">Over 12-24 months, UV exposure and expansion/contraction over the crushed void cause the membrane to thin and eventually crack.</p>
+                </div>
+              </li>
+              <li className="flex gap-4">
+                <div className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center shrink-0 font-bold">3</div>
+                <div>
+                  <p className="font-bold text-primary">Active Leakage</p>
+                  <p className="text-gray-600 text-sm">Water enters the building. By this time, the filing window has expired, and the carrier denies the claim as maintenance neglect.</p>
+                </div>
+              </li>
+            </ol>
+
+            <SectionTitle>Forensic Methodology</SectionTitle>
+            <p>StormChecks utilizes multi-source radar matching and NOAA Eye Passage data to verify conditions at exact property coordinates. We supplement this with on-site "impact directionality" mapping—measuring the angle of soft-metal dings to ensure they align with the recorded storm orientation.</p>
+
+            <SectionTitle>The Engineering Conclusion</SectionTitle>
+            <p>Catching damage in the "Latent Phase" is the difference between a fully-covered system replacement and a massive uncovered CapEx expense. Scientific documentation turns a subjective "opinion" into a mathematical "certainty" that carriers cannot ignore.</p>
+          </div>
         );
-      case '4':
+
+      case 'the-shrinking-window-state-filing-deadlines-for-2024': // Preparedness
         return (
-          <>
-            <p>Every state in the US has a statute of limitations for property insurance claims. Most range from 1 to 3 years. But here's the kicker: for commercial properties, the "clock" often starts the moment the storm happens, whether you've noticed the damage yet or not.</p>
-            <h3>Deadlines to Watch in 2024</h3>
-            <p>If your property was in the path of 2021 or 2022 storms in the following regions, you are likely in the "Red Zone" for filing:</p>
-            <ul>
-              <li><strong>Texas & Gulf Coast:</strong> Heavy 2021 hurricane activity deadlines are expiring now.</li>
-              <li><strong>Midwest Hail Belt:</strong> Major 2022 hail events will reach their 2-year filing limits by summer 2024.</li>
-              <li><strong>Florida:</strong> Recent legislative changes have significantly shortened the windows for "Notice of Loss."</li>
-            </ul>
-            <p>Once the deadline passes, your policy rights are effectively nullified. This is why our free monitoring looks back 24 months—to ensure you don't discover a $500k roof failure the month after your filing window closes.</p>
-          </>
+          <div className="space-y-6">
+            <SectionTitle>Overview Summary</SectionTitle>
+            <p>Property owners have a limited legal window to recover from storm damage. This preparedness briefing details the expiring deadlines for 2021-2022 events and the protocol for building a "Clean Baseline" for future events.</p>
+
+            <SectionTitle>Situation Report</SectionTitle>
+            <p>With major convective events occurring more frequently across the Midwest and Gulf Coast, the primary risk for 2024 is the closure of 3-year filing windows. Many buildings currently house "hidden" damage from massive 2021 storms that will become an permanent owner-paid liability if not filed this season.</p>
+
+            <SectionTitle>Pre-Loss Checklist</SectionTitle>
+            <div className="bg-white border-2 border-primary/10 rounded-xl p-8 my-10">
+              <ul className="space-y-6">
+                <li className="flex items-center gap-3">
+                  <CheckCircle2 className="text-accent" size={24} />
+                  <span className="font-bold text-primary">Review State Statute of Limitations for Property Claims</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle2 className="text-accent" size={24} />
+                  <span className="font-bold text-primary">Establish High-Resolution Drone "Clean Baseline" Photography</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle2 className="text-accent" size={24} />
+                  <span className="font-bold text-primary">Audit Policy "Notice of Loss" Requirements for each Asset</span>
+                </li>
+              </ul>
+            </div>
+
+            <SectionTitle>Documentation Protocol</SectionTitle>
+            <p>A "Clean Baseline" is your most powerful evidence. By documenting your roof and envelope state during the pre-season, you create the irrefutable "Before" evidence that makes "After" damage undeniable. Carriers can no longer argue that hail bruises were "pre-existing wear" when you have dated high-res proof of a clean substrate.</p>
+
+            <SectionTitle>The Response Plan</SectionTitle>
+            <p>Move from reactive to proactive monitoring. Use a forensic partner to track every meteorological event at your property coordinates. If a threshold event occurs, deploy a forensic team within 48 hours to document fresh evidence before it is obscured by natural weathering or foot traffic.</p>
+          </div>
         );
-      case '5':
+
+      case 'retail-center-recovery-why-contractor-bids-arent-enough': // Success Story
         return (
-          <>
-            <p>A retail property owner in Missouri received a $587,000 estimate from a local roofing contractor for hail damage. The insurance carrier offered $150,000, claiming they only needed to "repair" sections rather than replace the whole system.</p>
-            <p>The owner almost took the deal. Then they called us.</p>
-            <h3>Why the Bid Failed</h3>
-            <p>The contractor's bid was just a price. It didn't explain <em>why</em> the entire system was compromised. It didn't mention the HVAC condenser fins or the brittle-test failures of the surrounding flashing.</p>
-            <h3>The Expert File Result</h3>
-            <p>StormChecks documented that the hail impacts had caused "micro-fracturing" of the fiberglass mat within the shingles. This isn't visible from 10 feet away, but it's a structural failure. We provided a carrier-grade Xactimate estimate that accounted for building codes and "line-item" accuracy.</p>
-            <p>The final recovery? $3.9M. The difference between a "bid" and an "expert file" was $3.75M.</p>
-          </>
+          <div className="space-y-6">
+            <SectionTitle>Overview Summary</SectionTitle>
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-8 mb-10 overflow-hidden relative">
+              <div className="absolute top-0 right-0 p-4 opacity-5">
+                <TrendingUp size={120} />
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 relative z-10">
+                <div>
+                  <p className="text-xs text-gray-500 font-bold uppercase mb-1">Location</p>
+                  <p className="text-primary font-bold">Mexico, MO</p>
+                </div>
+                <div>
+                  <p className="text-xs text-gray-500 font-bold uppercase mb-1">Type</p>
+                  <p className="text-primary font-bold">Retail Center</p>
+                </div>
+                <div>
+                  <p className="text-xs text-gray-500 font-bold uppercase mb-1">Initial Bid</p>
+                  <p className="text-red-600 font-bold">$587,000</p>
+                </div>
+                <div>
+                  <p className="text-xs text-gray-500 font-bold uppercase mb-1">Final Settlement</p>
+                  <p className="text-green-600 font-bold">$3,900,000</p>
+                </div>
+              </div>
+            </div>
+            <p>A large multi-tenant retail center in Missouri suffered severe hail trauma. The owner was prepared to accept a $587,000 "repair bid" from a local roofer before StormChecks identified systemic failures that required full replacement under current building codes.</p>
+
+            <SectionTitle>The Challenge (The Denial)</SectionTitle>
+            <p>The insurance carrier accepted the contractor's bid but then applied heavy depreciation, arguing that the roof was already at the "end of its useful life." They claimed the hail damage was "cosmetic shingle granule loss" that did not warrant full system replacement, only localized patching.</p>
+
+            <SectionTitle>The Forensic Strategy</SectionTitle>
+            <p>StormChecks documented "Micro-Fracture" of the internal fiberglass matting—a structural failure that mandated replacement under local code. We proved the contractor bid was insufficient by performing infrared moisture mapping that revealed hidden substrate bruising. We then synchronized this data with radar Eye Passage to establish a clear Storm Nexus.</p>
+
+            <SectionTitle>The Outcome</SectionTitle>
+            <p>By moving the conversation from "construction price" to "forensic structural failure," the claim value increased by over 6.5x. The final $3.9M recovery allowed the owner to replace the entire system with a 20-year warranty, effectively restoring the asset's full market value and disposability.</p>
+          </div>
         );
-      case '6':
+
+      case 'microscopic-evidence-identifying-latent-damage-before-leaks-appear': // Technical Analysis
         return (
-          <>
-            <p>The most dangerous storm damage is the kind that doesn't leak. Yet.</p>
-            <p>On TPO or EPDM commercial roofs, a hail impact might not tear the surface. Instead, it creates a "latent fracture" in the underlying substrate. To the untrained eye—or a carrier's adjuster—the roof looks fine. No leaks, no problem, right?</p>
-            <h3>The "Brittle Test"</h3>
-            <p>Over the next two summers, the thermal expansion and contraction of the building cause those micro-fractures to widen. Eventually, they become leaks. But by the time it leaks, the storm happened three years ago, and the claim window is closed.</p>
-            <p>We use forensic techniques to identify this damage early:</p>
-            <ul>
-              <li>Infrared thermography to detect moisture trapped under the membrane.</li>
-              <li>Substrate core sampling to check for "bruising" of the insulation board.</li>
-              <li>Impact crater measurement.</li>
-            </ul>
-            <p>Documentation of these latent failures today ensures your building's value is protected before the "wear and tear" clock starts ticking in the carrier's favor.</p>
-          </>
+          <div className="space-y-6">
+            <SectionTitle>Overview Summary</SectionTitle>
+            <p>Waiting for a leak is a million-dollar mistake. This technical analysis explores how microscopic "bruising" in bitumen and TPO substrates inevitably leads to system failure and why forensic documentation is the only way to hold carriers accountable during the latent phase.</p>
+
+            <SectionTitle>Material Vulnerability Overview</SectionTitle>
+            <p>Modified bitumen and high-reflectivity TPO systems are robust but brittle. Kinetic energy from a 1.5"+ hailstone travels through the surface and crushes the insulation board underneath. This compression destroys the adhesion between the membrane and the substrate, creating a void that traps condensation and leads to rot.</p>
+
+            <SectionTitle>The Lifecycle of Failure</SectionTitle>
+            <ol className="space-y-8 my-10">
+              <li className="flex gap-4">
+                <div className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center shrink-0 font-bold">1</div>
+                <div>
+                  <p className="font-bold text-primary">Substrate Compression</p>
+                  <p className="text-gray-600 text-sm">Initial impact creates a void in the insulation. Granule loss is minimal. The roof remains watertight for the first 12 months.</p>
+                </div>
+              </li>
+              <li className="flex gap-4">
+                <div className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center shrink-0 font-bold">2</div>
+                <div>
+                  <p className="font-bold text-primary">Mat Fatigue</p>
+                  <p className="text-gray-600 text-sm">Thermal cycling causes the membrane to expand and contract over the un-supported void. The fiberglass matting begins to fracture at the edges of the dent.</p>
+                </div>
+              </li>
+              <li className="flex gap-4">
+                <div className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center shrink-0 font-bold">3</div>
+                <div>
+                  <p className="font-bold text-primary">Systemic Rupture</p>
+                  <p className="text-gray-600 text-sm">Active leaks begin 24-36 months after the storm. By this time, the filing window has closed, and the carrier calls it "simple wear and tear."</p>
+                </div>
+              </li>
+            </ol>
+
+            <SectionTitle>Forensic Methodology</SectionTitle>
+            <p>StormChecks utilizes infrared thermography to identify substrate compression before it leads to leakage. We supplement this with "Core Sampling" and microscopic imaging to physically demonstrate the delamination of the membrane from the insulation board, providing irrefutable proof of structural failure.</p>
+
+            <SectionTitle>The Engineering Conclusion</SectionTitle>
+            <p>Documenting substrate failure in Year 1 ensures the insurance company pays for the replacement. Waiting until Year 3 ensures the owner pays for the replacement. Forensic documentation is the bridge between a "denied maintenance" issue and a "fully-covered" storm loss.</p>
+          </div>
         );
+
       default:
         return <p>Content coming soon...</p>;
     }
@@ -127,7 +276,7 @@ const BlogPost: React.FC = () => {
 
   return (
     <div className="bg-white min-h-screen">
-      {/* Article Header - Centered Content */}
+      {/* Article Header */}
       <div className="bg-primary pt-32 pb-24 relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-10">
           <img src={article.image} alt="" className="w-full h-full object-cover blur-sm" />
@@ -168,10 +317,10 @@ const BlogPost: React.FC = () => {
               <img 
                 src={article.image} 
                 alt={article.title} 
-                className="w-full h-auto rounded-xl mb-12"
+                className="w-full h-auto rounded-xl mb-12 shadow-md"
               />
               
-              <div className="prose prose-lg prose-slate max-w-none text-gray-700 leading-relaxed space-y-6">
+              <div className="prose prose-lg prose-slate max-w-none text-gray-700 leading-relaxed">
                 {renderContent(article.id)}
               </div>
               
@@ -192,9 +341,8 @@ const BlogPost: React.FC = () => {
             </div>
           </div>
 
-          {/* Sidebar - Aligned with main content */}
+          {/* Sidebar */}
           <div className="lg:col-span-4 space-y-8 sticky top-24">
-            {/* Sidebar CTA Box - Updated background to bg-primary to match navigation */}
             <div className="bg-primary rounded-[22px] p-8 text-white border border-white/10 shadow-lg">
               <div className="w-14 h-14 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center mb-6">
                 <AlertCircle className="w-8 h-8 text-accent" />
@@ -211,7 +359,6 @@ const BlogPost: React.FC = () => {
               </Link>
             </div>
 
-            {/* Topics Card */}
             <div className="bg-gray-50 rounded-2xl p-8 border border-gray-200">
               <h4 className="font-bold text-primary mb-6 uppercase tracking-wider text-sm">Explore Categories</h4>
               <div className="flex flex-wrap gap-2">

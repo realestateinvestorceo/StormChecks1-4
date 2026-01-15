@@ -14,7 +14,7 @@ export interface Article {
 
 export const blogArticles: Article[] = [
   {
-    id: '1',
+    id: 'from-0-to-3-9m-overturning-a-lack-of-causation-denial',
     title: "From $0 to $3.9M: Overturning a 'Lack of Causation' Denial",
     excerpt: "How forensic meteorological evidence proved a hurricane nexus for a Marina facility in North Carolina when the carrier claimed the damage was pre-existing.",
     category: 'Success Stories',
@@ -23,7 +23,7 @@ export const blogArticles: Article[] = [
     readTime: '6 min read'
   },
   {
-    id: '2',
+    id: 'inside-the-carriers-mind-why-valid-claims-get-rejected',
     title: "Inside the Carrier's Mind: Why Valid Claims Get Rejected",
     excerpt: "Our founder, Michael Paul, shares the unwritten internal checklists insurance adjusters use to flag files for denial and how to bypass them.",
     category: 'Insurance Insights',
@@ -32,7 +32,7 @@ export const blogArticles: Article[] = [
     readTime: '8 min read'
   },
   {
-    id: '3',
+    id: 'the-science-of-storm-nexus-meteorological-coordinate-verification',
     title: "The Science of Storm Nexus: Meteorological Coordinate Verification",
     excerpt: "Deep dive into how we use NOAA data and microscopic impact analysis to link latent roof fractures to specific storm events, preventing 'wear and tear' excuses.",
     category: 'Technical Insights',
@@ -41,7 +41,7 @@ export const blogArticles: Article[] = [
     readTime: '10 min read'
   },
   {
-    id: '4',
+    id: 'the-shrinking-window-state-filing-deadlines-for-2024',
     title: "The Shrinking Window: State Filing Deadlines for 2024",
     excerpt: "Commercial property owners often miss out on millions because they don't realize the clock is ticking. Learn about the 1-3 year deadlines in your state.",
     category: 'Preparedness',
@@ -50,7 +50,7 @@ export const blogArticles: Article[] = [
     readTime: '5 min read'
   },
   {
-    id: '5',
+    id: 'retail-center-recovery-why-contractor-bids-arent-enough',
     title: "Retail Center Recovery: Why Contractor Bids Aren't Enough",
     excerpt: "A case study on a Missouri retail center where a standard contractor bid was lowballed by $3.3M until a carrier-grade forensic file was presented.",
     category: 'Success Stories',
@@ -59,7 +59,7 @@ export const blogArticles: Article[] = [
     readTime: '7 min read'
   },
   {
-    id: '6',
+    id: 'microscopic-evidence-identifying-latent-damage-before-leaks-appear',
     title: "Microscopic Evidence: Identifying Latent Damage Before Leaks Appear",
     excerpt: "Waiting for a leak is a million-dollar mistake. We explain how hail impacts compromise roofing membranes long before water enters the building.",
     category: 'Technical Insights',
@@ -81,18 +81,22 @@ const Resources: React.FC = () => {
   return (
     <div className="bg-white min-h-screen">
       {/* Hero Section */}
-      <section className="bg-primary py-20 relative overflow-hidden">
-        <div className="absolute inset-0 z-0 opacity-20">
-            <div 
-              className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: "url('https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/6965f00098efbd0763445bd5.png')" }}
-            ></div>
+      <section className="bg-primary py-24 md:py-32 relative overflow-hidden">
+        {/* Decorative background elements (matching CaseWork.tsx) */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute -right-[10%] -top-[10%] w-[800px] h-[800px] bg-white opacity-[0.03] rounded-full blur-3xl"></div>
+          <div className="absolute right-[5%] top-[25%] w-[600px] h-[600px] bg-accent opacity-[0.04] rounded-full blur-3xl"></div>
         </div>
+
         <div className="container mx-auto px-6 relative z-10 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Resources & Insights</h1>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Expert analysis on forensic documentation, insurance strategy, and commercial property storm recovery.
-          </p>
+          <div className="max-w-4xl mx-auto">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
+              Resources & Insights
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
+              Expert analysis on forensic documentation, insurance strategy, and commercial property storm recovery.
+            </p>
+          </div>
         </div>
       </section>
 

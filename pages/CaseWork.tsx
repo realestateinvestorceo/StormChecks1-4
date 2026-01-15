@@ -37,7 +37,7 @@ const CaseWork: React.FC = () => {
       initial: "$725,000",
       final: "$6,500,000",
       image: "https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/696612b095f9f954c402f872.png",
-      pdf: "https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/6965ec2ff8a93236b1fc86d.pdf",
+      pdf: "https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/6965ec2ff8a93b236b1fc86d.pdf",
       description: "Carrier lowballed the initial scope by 9x. Our forensic evidence proved damage was consistent with severe weather event and not wear-and-tear."
     },
     {
@@ -55,7 +55,7 @@ const CaseWork: React.FC = () => {
       initial: "$587,000",
       final: "$3,900,000",
       image: "https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/696611cbccf2c6af04f18876.png",
-      pdf: "https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/6965ec2f95f9f9940ffe58a3.pdf",
+      pdf: "https://storage.googleapis.com/msgsndr/7fFIJC0GfXGlSGfKIuzi/media/696611cbccf2c6af04f18876.png",
       description: "Event-specific damage previously unrecognized by maintenance teams. Expert File documented full scope and secured a 7x increase."
     },
     {
