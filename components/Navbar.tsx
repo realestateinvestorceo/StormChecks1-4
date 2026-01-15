@@ -9,6 +9,7 @@ const Navbar: React.FC = () => {
     { name: 'How It Works', path: '/how-it-works', isAnchor: false },
     { name: 'Expert File', path: '/expert-file', isAnchor: false },
     { name: 'Case Work', path: '/case-work', isAnchor: false },
+    { name: 'Resources', path: '/resources', isAnchor: false },
     { name: 'Leadership', path: '/leadership', isAnchor: false },
   ];
 
@@ -25,13 +26,13 @@ const Navbar: React.FC = () => {
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center space-x-8">
+        <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
           {navLinks.map((link) => (
              link.isAnchor ? (
                 <a
                   key={link.name}
                   href={link.path}
-                  className="text-gray-300 hover:text-accent font-medium transition-colors text-sm uppercase tracking-wide"
+                  className="text-gray-300 hover:text-accent font-medium transition-colors text-xs xl:text-sm uppercase tracking-wide whitespace-nowrap"
                 >
                   {link.name}
                 </a>
@@ -39,7 +40,7 @@ const Navbar: React.FC = () => {
                 <Link
                   key={link.name}
                   to={link.path}
-                  className="text-gray-300 hover:text-accent font-medium transition-colors text-sm uppercase tracking-wide"
+                  className="text-gray-300 hover:text-accent font-medium transition-colors text-xs xl:text-sm uppercase tracking-wide whitespace-nowrap"
                 >
                   {link.name}
                 </Link>

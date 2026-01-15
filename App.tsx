@@ -10,6 +10,8 @@ import Contact from './pages/Contact';
 import HowItWorks from './pages/HowItWorks';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
+import Resources from './pages/Resources';
+import BlogPost from './pages/BlogPost';
 
 const App: React.FC = () => {
   return (
@@ -26,6 +28,8 @@ const App: React.FC = () => {
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
+            <Route path="/resources" element={<Resources />} />
+            <Route path="/resources/:id" element={<BlogPost />} />
           </Routes>
         </main>
         <Footer />

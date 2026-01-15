@@ -25,6 +25,7 @@ const Footer: React.FC = () => {
           {/* Links Column */}
           <div className="flex flex-col space-y-3">
              <h4 className="font-bold text-white mb-2 uppercase text-sm tracking-wider">Company</h4>
+             <Link to="/resources" className="text-gray-400 hover:text-accent transition-colors text-sm">Resources & Insights</Link>
              <Link to="/privacy" className="text-gray-400 hover:text-accent transition-colors text-sm">Privacy Policy</Link>
              <Link to="/terms" className="text-gray-400 hover:text-accent transition-colors text-sm">Terms of Service</Link>
              <Link to="/contact?contact=true" className="text-gray-400 hover:text-accent transition-colors text-sm">Contact Us</Link>
